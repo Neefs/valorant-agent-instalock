@@ -40,6 +40,8 @@ if update == True:
         latest = float(updatedata["tag_name"].split("-")[1]) #this is accounting for tagnames to be formatted like "something-1.1"
     except requests.ConnectionError:
         print("Could not connect to github server. Make sure you are connected to the internet.")
+    except IndexError:
+        print("If you are seeing this please make an issue on the github if there is not one already.\nError: Release tagname does not follow format.")
     else:
         if VERSION != latest:
             uchoice = input("There is a newer version would you like to update? (y or n): ").lower()
